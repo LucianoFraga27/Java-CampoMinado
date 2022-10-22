@@ -96,4 +96,52 @@ public class Campo {
 	public boolean isMarcado() {
 		return this.marcado;
 	}
+
+
+	public int getLinha() {
+		return this.linha;
+	}
+
+
+	public int getColuna() {
+		return this.coluna;
+	}
+	
+	
+	boolean objetivoAlcancado() {
+		boolean desvendado = !this.minado && this.aberto; //campo seguro
+		boolean protegido = this.minado && this.marcado;
+		return desvendado || protegido;
+	}
+	
+	
+	long minasNaVizinhaca() {
+		long minas = vizinhos.stream()
+							 .filter(v->v.minado)
+							 .count();
+		return minas;
+	}
+	
+	
+	void reiniciar() {
+		this.aberto  = false;
+		this.minado  = false;
+		this.marcado = false;
+	}
+	
+	
+	public String toString() {
+		if(this.marcado) {
+			return "X";
+		} else if (this.aberto && this.minado) {
+			return "*";
+		} else if(this.aberto && minasNaVizinhaca()>0) {
+			return Long.toString(minasNaVizinhaca());
+		} else if (this.aberto) {
+			return " ";
+		} else {
+			return "?";
+		}
+	}
+	
 }

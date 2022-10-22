@@ -18,6 +18,8 @@ public class CampoTeste {
 		campo = new Campo(3, 3);					// [2,2] [2,3] [2,4]
 	}												// [3,2] [3,3] [3,4]
  													// [4,2] [4,3] [4,4]
+	
+	
 	// Testando vizinhos
 	
 	@Test
@@ -149,5 +151,29 @@ public class CampoTeste {
 		
 		assertTrue(campo22.isAberto() && campo11.isFechado());
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
 
