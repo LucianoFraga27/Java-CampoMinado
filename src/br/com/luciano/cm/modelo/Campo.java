@@ -57,23 +57,43 @@ public class Campo {
 	
 	
 	boolean abrir() {
-		if(!this.aberto && !marcado) {
+		if(!this.aberto && !this.marcado) {
 			this.aberto = true;
 			if(this.minado) {
 				throw new ExplosaoException(); 
 			}
 			if(vizinhacaSegura()) {
-				vizinhos.stream().forEach(v -> v.abrir());
+				vizinhos.forEach(v -> v.abrir());
 			}
 			return true;
 		} else {
 			return false;		
 		}
 	}
+	
+	
+	public boolean isAberto() {
+		return aberto;
+	} 
 
+	
+	public boolean isFechado() {
+		return !isAberto();
+	} 
 	
 	boolean vizinhacaSegura() {
 		return vizinhos.stream().noneMatch(v -> v.minado);
 	}
+
 	
+	void minar() {
+		if(this.minado == false) {
+			this.minado = true;
+		}
+	}
+	
+	
+	public boolean isMarcado() {
+		return this.marcado;
+	}
 }
