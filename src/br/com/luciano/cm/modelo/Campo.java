@@ -3,6 +3,8 @@ package br.com.luciano.cm.modelo;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.luciano.cm.excecao.ExplosaoException;
+
 public class Campo {
 
 	private final int linha	; 							// [linha,coluna]
@@ -14,10 +16,12 @@ public class Campo {
 
 	private List<Campo> vizinhos = new ArrayList<>(); 	// Auto relacionamento 1,N
 	
+	
 	Campo(int linha, int coluna){
 		this.linha 	= linha	;
 		this.coluna = coluna;
 	};
+	
 	
 	boolean adicionarVizinho(Campo vizinho) { 
 		
@@ -43,5 +47,33 @@ public class Campo {
 		}	
 		return caso;
 	}
+	
+	
+	void alternarMarcacao() {
+		if(!this.aberto) {
+			this.marcado = !this.marcado;
+		}
+	}
+	
+	
+	boolean abrir() {
+		if(!this.aberto && !marcado) {
+			this.aberto = true;
+			if(this.minado) {
+				throw new ExplosaoException(); 
+			}
+			if(vizinhacaSegura()) {
+				vizinhos.stream().forEach(v -> v.abrir());
+			}
+			return true;
+		} else {
+			return false;		
+		}
+	}
 
+	
+	boolean vizinhacaSegura() {
+		return vizinhos.stream().noneMatch(v -> v.minado);
+	}
+	
 }
