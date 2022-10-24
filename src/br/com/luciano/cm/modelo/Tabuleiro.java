@@ -70,7 +70,7 @@ public class Tabuleiro {
 					 .allMatch(c->c.objetivoAlcancado());
 	}
 	
-	void reiniciar() {
+	public void reiniciar() {
 		campos.stream()
 			  .forEach(c->c.reiniciar());
 		sortearMina();

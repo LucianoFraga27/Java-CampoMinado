@@ -1,6 +1,7 @@
 package br.com.luciano.cm;
 
 import br.com.luciano.cm.modelo.Tabuleiro;
+import br.com.luciano.cm.visao.TabuleiroConsole;
 
 public class Aplicacao {
 
@@ -8,8 +9,8 @@ public class Aplicacao {
 		
 		Tabuleiro tabuleiro = new Tabuleiro(6,6,1);
 		
-		tabuleiro.abrir(5, 4);
-		System.out.println(tabuleiro);
+		new TabuleiroConsole(tabuleiro);
+	
 		
 	}
 }
