@@ -100,7 +100,10 @@ public class Campo {
 	public boolean isMarcado() {
 		return this.marcado;
 	}
-
+	
+	void setAberto(boolean aberto) {
+		this.aberto = aberto;
+	}
 
 	public int getLinha() {
 		return this.linha;
