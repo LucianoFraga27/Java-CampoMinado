@@ -19,6 +19,27 @@ public class CampoTeste {
 	}												// [3,2] [3,3] [3,4]
  													// [4,2] [4,3] [4,4]
 	
+	// Testando valores dentro da linha e coluna
+	
+	@Test
+	void testeValorLinha() {
+		assertTrue(campo.getLinha() > -1);
+	}
+	
+	@Test
+	void testeValorLinha2() {
+		assertFalse(campo.getLinha() < -1);
+	}
+	
+	@Test
+	void testeValorColuna() {
+		assertTrue(campo.getColuna() > -1);
+	}
+	
+	@Test
+	void testeValorColuna2() {
+		assertFalse(campo.getColuna() < -1);
+	}
 	
 	// Testando vizinhos
 	
@@ -152,28 +173,84 @@ public class CampoTeste {
 		assertTrue(campo22.isAberto() && campo11.isFechado());
 	}
 	
+	// Teste minado
 	
+	@Test
+	void testeNaoEstaMinado() {
+		assertFalse(campo.isMinado());
+	}
 	
+	// Teste reinicio
 	
+	@Test
+	void testeReiniciar() {
+		boolean rodando = true;
+		campo.reiniciar();
+		if(campo.isAberto() == false && campo.isMarcado() == false && campo.isMinado() == false) {
+			rodando = false;
+			assertFalse(campo.isMinado());
+			}
+		}
+		
 	
+	// Objetivo alcançado
+	/*
+	@Test
+	void testeObjetivoAlcancado() {
+		assertTrue(campo.objetivoAlcancado());
+		}
+	*/
 	
+	// Teste minas na vizinhaca
 	
+	@Test
+	void testeMinasNaVizinhaca() {
+		assertTrue(campo.minasNaVizinhaca() == 0 || campo.minasNaVizinhaca() > 0);
+		} 
 	
+	@Test
+	void testeMinasNaVizinhacaFalse() {
+		assertFalse(campo.minasNaVizinhaca() < 0);
+		} 
 	
+	// Teste minas na vizinhaca
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@Test
+	void testeToString1() {
+		assertTrue(campo.toString() != "X");
+		} 
+	@Test
+	void testeToString2() {
+		assertTrue(campo.toString() != "*");
+		} 
+	@Test
+	void testeToString3() {
+		assertTrue(campo.toString() != " ");
+		} 
+	@Test
+	void testeToStrin4() {
+		assertTrue(campo.toString() == "?");
+		} 
+
+
 }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 

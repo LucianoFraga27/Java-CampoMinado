@@ -92,6 +92,10 @@ public class Campo {
 		}
 	}
 	
+	public boolean isMinado() {
+		return this.minado;
+	}
+	
 	
 	public boolean isMarcado() {
 		return this.marcado;
