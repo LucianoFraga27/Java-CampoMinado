@@ -50,7 +50,7 @@ public class TabuleiroConsole {
 			while(!tabuleiro.objetivoAlcancado()) {
 				System.out.println(tabuleiro.toString());
 				
-				String digitado = capturaValorDigitado("Digite valores de ( x , y )");
+				String digitado = capturaValorDigitado("Digite valores de ( x , y ) -> ");
 				
 				
 				Iterator<Integer> xy =	 Arrays.stream(digitado.split(","))
@@ -66,6 +66,7 @@ public class TabuleiroConsole {
 				}
 				
 			}
+			System.out.println(tabuleiro);
 			System.out.println("Voce ganhou");
 		} catch (ExplosaoException e) {
 			System.out.println(tabuleiro);
